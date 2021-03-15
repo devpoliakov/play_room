@@ -11,7 +11,10 @@ server.listen(process.env.PORT || 3000);
 console.log('Server connection');
 
 app.get('/', function(req, res){
-	res.sendFile(__dirname + '/index.html');
+	res.sendFile(__dirname + '/public/index.html');
+});
+app.get('/css/styles.css', function(req, res){
+	res.sendFile(__dirname + '/public/css/styles.css');
 });
 
 io.sockets.on('connection', function(socket){
