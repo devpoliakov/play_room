@@ -34,6 +34,11 @@
 			socket.emit('vote');
 			console.log('good connection');
 		});
+
+		socket.on('timer', function(data){
+			console.log('Timer: %s sockets connected', data.msg);
+			$('#timer').text(data.msg);
+		});
 	});
 </script>
 
