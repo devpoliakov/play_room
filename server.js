@@ -4,6 +4,8 @@ var server = require('http').createServer(app);
 var ioServ = require('socket.io');
 var io = ioServ().listen(server);
 
+var baseTimer = 20;
+
 users = [];
 connections = [];
 
@@ -28,5 +30,23 @@ io.sockets.on('connection', function(socket){
 
 	socket.on('vote', function(data){
 		console.log('user makes a wage');
+		if(baseTimer !== 0 ){
+			baseTimer += 30;
+		}
 	});
+
+	const intervalObj = setInterval(() => {
+		
+		io.sockets.emit('timer',{msg: baseTimer});
+
+	  if(baseTimer == 0 )
+	  	clearInterval(intervalObj);
+	  baseTimer -= 1;
+
+	}, 1000);
+
 });
+
+
+
+
