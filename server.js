@@ -25,4 +25,8 @@ io.sockets.on('connection', function(socket){
 		connections.splice(connections.indexOf(socket), 1);
 		console.log('Disconnected: %s sockets connected', connections.length);
 	});
+
+	socket.on('vote', function(data){
+		console.log('user makes a wage');
+	});
 });

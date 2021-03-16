@@ -27,7 +27,13 @@
 
 <script type="text/javascript">
 	$(function(){
+		var $timer = $('#timer');
 		var socket = io.connect();
+
+		$timer.click(function(e){
+			socket.emit('vote');
+			console.log('good connection');
+		});
 	});
 </script>
 
